@@ -1,5 +1,5 @@
 import type { StrategyWorkflow, WorkflowEdge } from "./model";
-import { conditionExpression, workflowConditionExpression } from "./formatters.js";
+import { conditionExpression, workflowConditionExpression } from "./formatters";
 
 function visibleEdges(workflow: StrategyWorkflow, visibleNodeKeys: Set<string>): WorkflowEdge[] {
   const directEdges = workflow.edges.filter(

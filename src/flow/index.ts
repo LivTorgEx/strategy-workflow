@@ -1,7 +1,7 @@
-export { buildWorkflowGraph } from "./buildWorkflowGraph.js";
-export { normalizeWorkflowGraph } from "./model.js";
-export { edgeHandles, layoutWorkflowNodes } from "./layout.js";
-export { visibleEdges } from "./visibleEdges.js";
+export { buildWorkflowGraph } from "./buildWorkflowGraph";
+export { normalizeWorkflowGraph } from "./model";
+export { edgeHandles, layoutWorkflowNodes } from "./layout";
+export { visibleEdges } from "./visibleEdges";
 export {
   conditionExpression,
   configString,
@@ -12,7 +12,7 @@ export {
   workflowNodeTitle,
   workflowNodeVisualState,
   workflowConditionExpression,
-} from "./formatters.js";
+} from "./formatters";
 export type {
   WorkflowEdgeData,
   WorkflowFlowEdge,
@@ -21,4 +21,4 @@ export type {
   WorkflowGraphPalette,
   WorkflowNodeData,
   WorkflowTriggerData,
-} from "./types.js";
+} from "./types";

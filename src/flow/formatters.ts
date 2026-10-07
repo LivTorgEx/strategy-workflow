@@ -4,7 +4,7 @@ import {
   WORKFLOW_COMPACT_NODE_WIDTH,
   WORKFLOW_NODE_HEIGHT,
   WORKFLOW_NODE_WIDTH,
-} from "./constants.js";
+} from "./constants";
 
 export function workflowNodeTitle(node: WorkflowNode): string {
   return node.name || node.node_key;

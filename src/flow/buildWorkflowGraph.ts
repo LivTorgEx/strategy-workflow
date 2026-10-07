@@ -7,11 +7,11 @@ import {
   WORKFLOW_GAP_Y,
   WORKFLOW_TRIGGER_HEIGHT,
   WORKFLOW_TRIGGER_WIDTH,
-} from "./constants.js";
-import { edgeHandles, layoutWorkflowNodes } from "./layout.js";
-import { conditionExpression, workflowNodeDimensions } from "./formatters.js";
-import type { WorkflowGraph, WorkflowGraphPalette } from "./types.js";
-import { visibleEdges } from "./visibleEdges.js";
+} from "./constants";
+import { edgeHandles, layoutWorkflowNodes } from "./layout";
+import { conditionExpression, workflowNodeDimensions } from "./formatters";
+import type { WorkflowGraph, WorkflowGraphPalette } from "./types";
+import { visibleEdges } from "./visibleEdges";
 
 function workflowEdgeId(edgeId: string): string {
   const separator = edgeId.lastIndexOf(":");

@@ -5,8 +5,8 @@ import {
   WORKFLOW_NODE_WIDTH,
   WORKFLOW_TRIGGER_HEIGHT,
   WORKFLOW_TITLE_HEIGHT,
-} from "./constants.js";
-import { workflowNodeDimensions } from "./formatters.js";
+} from "./constants";
+import { workflowNodeDimensions } from "./formatters";
 
 function edgeOrder(edge: WorkflowEdge, index: number) {
   const triggerRank =
