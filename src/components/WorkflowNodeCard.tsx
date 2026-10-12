@@ -7,6 +7,16 @@ import { WorkflowHandles } from "./WorkflowHandles";
 export function WorkflowNodeCard({ data, selected }: NodeProps<WorkflowFlowNode>) {
   const { node, current, failed } = data as WorkflowNodeData;
   const compact = node.node_type === "fork" || node.node_type === "join";
+  const title = workflowNodeTitle(node);
+  const tooltip = [
+    title,
+    `Type: ${node.node_type}`,
+    node.requires_confirmation ? "Approval required" : null,
+    current ? "Current" : null,
+    failed ? "Failed" : null,
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   return (
     <div
@@ -17,24 +27,35 @@ export function WorkflowNodeCard({ data, selected }: NodeProps<WorkflowFlowNode>
       data-node-type={node.node_type}
       role="button"
       tabIndex={0}
-      aria-label={`${workflowNodeTitle(node)} workflow node${failed ? ", failed" : ""}`}
-      title={`${workflowNodeTitle(node)}${failed ? " · Failed" : ""}`}
+      aria-label={tooltip.replaceAll("\n", ", ")}
+      title={tooltip}
     >
       <WorkflowHandles nodeType={node.node_type} />
       <div className="strategy-workflow-node-content">
-        <Text as="span" variant="body-sm" weight="semibold" tone="inverse">
-          {workflowNodeTitle(node)}
+        <Text as="span" variant="body-sm" weight="semibold" tone="inverse" truncate>
+          {title}
         </Text>
-        {!compact ? (
-          <Text as="span" variant="caption" tone="subtle">
-            {node.node_type}
-          </Text>
-        ) : null}
         <div className="strategy-workflow-node-badges">
-          <Badge variant="neutral">{node.node_type}</Badge>
-          {node.requires_confirmation ? <Badge variant="warning">approval required</Badge> : null}
-          {current ? <Badge variant="active">Current</Badge> : null}
-          {failed ? <Badge variant="loss">Failed</Badge> : null}
+          {compact ? (
+            failed ? (
+              <Badge variant="loss">Failed</Badge>
+            ) : current ? (
+              <Badge variant="active">Current</Badge>
+            ) : node.requires_confirmation ? (
+              <Badge variant="warning">approval required</Badge>
+            ) : (
+              <Badge variant="neutral">{node.node_type}</Badge>
+            )
+          ) : (
+            <>
+              <Badge variant="neutral">{node.node_type}</Badge>
+              {node.requires_confirmation ? (
+                <Badge variant="warning">approval required</Badge>
+              ) : null}
+              {current ? <Badge variant="active">Current</Badge> : null}
+              {failed ? <Badge variant="loss">Failed</Badge> : null}
+            </>
+          )}
         </div>
       </div>
     </div>
