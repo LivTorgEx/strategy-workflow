@@ -9,6 +9,7 @@ const EMPTY_NODE_KEYS: ReadonlySet<string> = new Set();
 export function WorkflowGraphView({
   graph,
   currentNodeKeys = EMPTY_NODE_KEYS,
+  failedNodeKeys = EMPTY_NODE_KEYS,
   selectedNodeKey = null,
   onNodeSelect,
   fitView = true,
@@ -24,8 +25,9 @@ export function WorkflowGraphView({
         null,
         null,
         currentNodeKeys,
+        failedNodeKeys,
       ),
-    [currentNodeKeys, selectedNodeKey, workflow],
+    [currentNodeKeys, failedNodeKeys, selectedNodeKey, workflow],
   );
 
   if (graph.nodes.length === 0) {

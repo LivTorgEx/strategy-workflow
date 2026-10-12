@@ -26,6 +26,7 @@ export function buildWorkflowGraph(
   selectedEdgeId: string | null = null,
   selectedTriggerId: string | null = null,
   currentNodeKeys: ReadonlySet<string> = new Set(),
+  failedNodeKeys: ReadonlySet<string> = new Set(),
 ): WorkflowGraph {
   const nodes = workflow.nodes.filter((node) => !HIDDEN_OVERVIEW_NODE_TYPES.has(node.node_type));
   const nodeKeys = new Set(nodes.map((node) => node.node_key));
@@ -104,6 +105,7 @@ export function buildWorkflowGraph(
           node,
           run,
           current: currentNodeKeys.has(node.node_key),
+          failed: failedNodeKeys.has(node.node_key),
         },
         selected: node.node_key === selectedNodeKey,
         draggable: false,

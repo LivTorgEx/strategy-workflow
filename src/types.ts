@@ -41,6 +41,7 @@ export type WorkflowGraph = {
 export type WorkflowGraphViewProps = {
   graph: WorkflowGraph;
   currentNodeKeys?: ReadonlySet<string>;
+  failedNodeKeys?: ReadonlySet<string>;
   selectedNodeKey?: string | null;
   onNodeSelect?: (nodeKey: string | null) => void;
   fitView?: boolean;

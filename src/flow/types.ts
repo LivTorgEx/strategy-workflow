@@ -5,6 +5,7 @@ export type WorkflowNodeData = {
   node: WorkflowNode;
   run?: StrategyWorkflowRunInspection;
   current: boolean;
+  failed: boolean;
 };
 
 export type WorkflowTriggerData = {
