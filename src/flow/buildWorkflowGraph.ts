@@ -143,7 +143,8 @@ export function buildWorkflowGraph(
                 : {}),
             },
             selected: edge.id === selectedEdgeId,
-            label: edge.trigger_type === "success" ? undefined : edge.trigger_type,
+            label:
+              edge.branch_name ?? (edge.trigger_type === "success" ? undefined : edge.trigger_type),
             labelStyle: { fontSize: 11, fill: palette.label },
             labelBgStyle: { fill: palette.labelBackground, fillOpacity: 0.9 },
             style: {

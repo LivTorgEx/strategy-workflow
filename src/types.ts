@@ -17,6 +17,7 @@ export type WorkflowGraphEdge = {
   workflow_id?: string;
   from_node_key: string;
   to_node_key: string;
+  branch_name?: string | null;
   trigger_type?: "success" | "failure" | "condition";
   condition?: unknown;
   priority?: number;
